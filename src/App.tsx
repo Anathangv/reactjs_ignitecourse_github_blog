@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components'
 import { Header } from './components/Header'
+import { Home } from './pages/Home'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 
@@ -8,6 +9,7 @@ import { defaultTheme } from './styles/themes/default'
 - styled-components
   - createGlobalStyle
   - ThemeProvider
+- phosphor-react
 */
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
       <Header />
+      <Home />
     </ThemeProvider>
   )
 }
