@@ -19,7 +19,7 @@ export const SearchContainer = styled.section`
 
     span:nth-child(2) {
       font-size: 0.875rem;
-      color: ${(props) => props.theme['base-label']};
+      color: ${(props) => props.theme['base-span']};
     }
   }
 `
