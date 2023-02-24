@@ -26,9 +26,13 @@ export const ContentContainer = styled.div`
     }
 
     a {
+      text-decoration: none;
+      height: fit-content;
       font-weight: 700;
       font-size: 0.75rem;
-      color: ${(props) => props.theme['base-title']};
+      color: ${(props) => props.theme.blue};
+      display: flex;
+      gap: 0.5rem;
     }
   }
 
@@ -36,10 +40,14 @@ export const ContentContainer = styled.div`
     line-height: 1.6rem;
   }
 
-  div {
+  & > div {
     display: flex;
     gap: 1.5rem;
     margin-top: 1.5rem;
   }
 `
-export const Detail = styled.span``
+export const Detail = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`

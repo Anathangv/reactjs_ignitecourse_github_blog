@@ -1,4 +1,11 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import {
+  faArrowUpRightFromSquare,
+  faBuilding,
+  faUserGroup,
+} from '@fortawesome/free-solid-svg-icons'
 import { ContentContainer, Detail, ProfileContainer } from './styles'
 
 export function Profile() {
@@ -9,7 +16,10 @@ export function Profile() {
       <ContentContainer>
         <header>
           <h3>Marcos Anathan</h3>
-          <a>GITHUB</a>
+          <a href="#">
+            GITHUB
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+          </a>
         </header>
         <p>
           Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
@@ -18,15 +28,15 @@ export function Profile() {
         </p>
         <div>
           <Detail>
-            {/* <FontAwesomeIcon icon="fa-brands fa-github" /> */}
+            <FontAwesomeIcon icon={faGithub} />
             <span>anathangv</span>
           </Detail>
           <Detail>
-            {/* <FontAwesomeIcon icon="fa-brands fa-github" /> */}
+            <FontAwesomeIcon icon={faBuilding} />
             <span>Rocketseat</span>
           </Detail>
           <Detail>
-            {/* <FontAwesomeIcon icon="fa-brands fa-github" /> */}
+            <FontAwesomeIcon icon={faUserGroup} />
             <span>32 seguidores</span>
           </Detail>
         </div>

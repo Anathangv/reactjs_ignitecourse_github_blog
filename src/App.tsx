@@ -1,6 +1,6 @@
+import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import { Header } from './components/Header'
-import { Home } from './pages/Home'
+import { Router } from './Router'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 
@@ -9,15 +9,17 @@ import { defaultTheme } from './styles/themes/default'
 - styled-components
   - createGlobalStyle
   - ThemeProvider
-- phosphor-react
+- react-router-dom
+- font-awesome
 */
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
       <GlobalStyle />
-      <Header />
-      <Home />
     </ThemeProvider>
   )
 }

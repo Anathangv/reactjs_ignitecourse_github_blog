@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const SearchContainer = styled.section`
-  max-width: 54rem;
+  max-width: 100%;
+  width: 54rem;
   margin: 0 auto;
   margin-top: 4.5rem;
 
