@@ -8,6 +8,13 @@ export const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  border: 1px solid ${(props) => props.theme['base-post']};
+  transition: 0.4s;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid ${(props) => props.theme['base-span']};
+  }
 
   div {
     display: flex;

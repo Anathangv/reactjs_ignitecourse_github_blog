@@ -28,14 +28,22 @@ export const NavegationContainer = styled.div`
   justify-content: space-between;
   margin-bottom: 1.25rem;
 
-  a {
-    text-decoration: none;
-    height: fit-content;
+  & > span {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
     font-weight: 700;
     font-size: 0.75rem;
     color: ${(props) => props.theme.blue};
-    display: flex;
-    gap: 0.5rem;
+    border-bottom: 1px solid ${(props) => props.theme['base-profile']};
+    transition: 0.4s;
+    padding-bottom: 0.3rem;
+
+    &:hover {
+      cursor: pointer;
+      border-bottom: 1px solid ${(props) => props.theme.blue};
+    }
   }
 `
 

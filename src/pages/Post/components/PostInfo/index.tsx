@@ -11,19 +11,26 @@ import {
   DetailContainer,
   PostInfoContainer,
 } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 export function PostInfo() {
+  const navegate = useNavigate()
+
+  function handleClickReturn() {
+    navegate('/')
+  }
+
   return (
     <PostInfoContainer>
       <NavegationContainer>
-        <a href="#">
+        <span onClick={handleClickReturn}>
           <FontAwesomeIcon icon={faLessThan} />
-          VOLTAR
-        </a>
-        <a href="#">
+          <span>VOLTAR</span>
+        </span>
+        <span>
           VER NO GITHUB
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-        </a>
+        </span>
       </NavegationContainer>
       <header>
         <h3>JavaScript data types and data structures</h3>
@@ -35,11 +42,11 @@ export function PostInfo() {
         </span>
         <span>
           <FontAwesomeIcon icon={faCalendarDay} />
-          Rocketseat
+          Há um dia
         </span>
         <span>
           <FontAwesomeIcon icon={faComment} />
-          32 seguidores
+          32 comentários
         </span>
       </DetailContainer>
     </PostInfoContainer>
