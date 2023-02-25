@@ -11,6 +11,7 @@ import { defaultTheme } from './styles/themes/default'
   - ThemeProvider
 - react-router-dom
 - font-awesome
+- axios
 */
 
 function App() {
