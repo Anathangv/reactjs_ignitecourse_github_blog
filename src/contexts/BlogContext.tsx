@@ -52,6 +52,7 @@ export interface IIssue {
 interface IBlogContext {
   profile: IProfile
   issues: IIssue[]
+  fetchIssues: (query?: string) => void
 }
 
 export const BlogContext = createContext({} as IBlogContext)
@@ -93,9 +94,11 @@ export function BlogProvider({ children }: IBlogProviderProps) {
     setIssues(nomalizedIssues)
   }
 
-  async function fetchIssues() {
+  async function fetchIssues(query?: string) {
+    query = query || ''
+
     const response = await api.get(
-      'search/issues?q=arepo:rocketseat-education/reactjs-github-blog-challenge',
+      `search/issues?q=${query}repo:rocketseat-education/reactjs-github-blog-challenge`,
     )
 
     normalizeIssues(response.data)
@@ -107,7 +110,7 @@ export function BlogProvider({ children }: IBlogProviderProps) {
   }, [])
 
   return (
-    <BlogContext.Provider value={{ profile, issues }}>
+    <BlogContext.Provider value={{ profile, issues, fetchIssues }}>
       {children}
     </BlogContext.Provider>
   )

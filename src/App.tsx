@@ -15,6 +15,7 @@ import { defaultTheme } from './styles/themes/default'
 - react-router-dom
 - font-awesome
 - axios
+- react-hook-form
 */
 
 function App() {

@@ -22,17 +22,23 @@ export const SearchContainer = styled.section`
       color: ${(props) => props.theme['base-span']};
     }
   }
-`
-export const InputSearch = styled.input`
-  border: none;
-  width: 100%;
-  border-radius: 6px;
-  border: 1px solid ${(props) => props.theme['base-border']};
-  background-color: ${(props) => props.theme['base-input']};
-  padding: 1rem 0.75rem;
-  color: ${(props) => props.theme['base-text']};
 
-  &::placeholder {
-    color: ${(props) => props.theme['base-label']};
+  form > input {
+    border: none;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid ${(props) => props.theme['base-border']};
+    background-color: ${(props) => props.theme['base-input']};
+    padding: 1rem 0.75rem;
+    color: ${(props) => props.theme['base-text']};
+
+    &:focus {
+      box-shadow: none;
+      border-color: ${(props) => props.theme.blue};
+    }
+
+    &::placeholder {
+      color: ${(props) => props.theme['base-label']};
+    }
   }
 `
