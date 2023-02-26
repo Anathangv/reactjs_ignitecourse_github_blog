@@ -7,64 +7,13 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { ContentContainer, Detail, ProfileContainer } from './styles'
-import { useEffect, useState } from 'react'
-import { api } from '../../../../lib/axios'
-
-interface IProfileDataResponse {
-  login: string
-  avatar_url: string
-  html_url: string
-  name: string
-  company: string
-  bio: string
-  followers: number
-}
-
-interface IProfileData {
-  login: string
-  avatarUrl: string
-  htmlUrl: string
-  name: string
-  company: string
-  bio: string
-  followers: number
-}
-
-/*
-TODO
- - callback in normalize function
-*/
+import { useContext } from 'react'
+import { BlogContext } from '../../../../contexts/BlogContext'
 
 export function Profile() {
-  const [profileData, setProfileData] = useState<IProfileData>(
-    {} as IProfileData,
-  )
-
-  function normalizeProfileData(profileDataResponse: IProfileDataResponse) {
-    setProfileData({
-      avatarUrl: profileDataResponse.avatar_url,
-      bio: profileDataResponse.bio,
-      company: profileDataResponse.company,
-      followers: profileDataResponse.followers,
-      htmlUrl: profileDataResponse.html_url,
-      login: profileDataResponse.login,
-      name: profileDataResponse.name,
-    } as IProfileData)
-  }
-
-  async function fetchProfileData() {
-    const response = await api.get('users/rocketseat-education')
-
-    console.log(response.data)
-    normalizeProfileData(response.data)
-  }
-
-  useEffect(() => {
-    fetchProfileData()
-  }, [])
-
-  const { name, avatarUrl, bio, company, followers, htmlUrl, login } =
-    profileData
+  const {
+    profile: { avatarUrl, bio, company, followers, htmlUrl, login, name },
+  } = useContext(BlogContext)
 
   return (
     <ProfileContainer>
