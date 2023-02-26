@@ -1,8 +1,21 @@
 import { useNavigate } from 'react-router-dom'
+import { IIssue } from '../../../../contexts/BlogContext'
 import { PostContainer } from './styles'
 
-export function Post() {
+/*
+TODO
+ - fix date
+ - missing retisence in blog card
+*/
+
+interface IPostProps {
+  publication: IIssue
+}
+
+export function Post({ publication }: IPostProps) {
   const navigate = useNavigate()
+
+  const { createdAt, title, body } = publication
 
   function handleClickOpenPost() {
     navigate('/post')
@@ -11,14 +24,10 @@ export function Post() {
   return (
     <PostContainer onClick={handleClickOpenPost}>
       <div>
-        <span>Javascript data types and data structures </span>
-        <span>Há 1 dia</span>
+        <span>{title}</span>
+        <span>{createdAt.toString()}</span>
       </div>
-      <p>
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in
-      </p>
+      <p>{body}</p>
     </PostContainer>
   )
 }

@@ -4,6 +4,7 @@ import { api } from '../lib/axios'
 /*
 TODO
  - callback in normalize function
+ - add a image/message when no blog found 
 */
 
 interface IBlogProviderProps {
@@ -30,14 +31,34 @@ interface IProfile {
   followers: number
 }
 
+interface IIssueItemResponse {
+  number: number
+  title: string
+  created_at: Date
+  body: string
+}
+
+interface IIssueResponse {
+  items: IIssueItemResponse[]
+}
+
+export interface IIssue {
+  number: number
+  title: string
+  createdAt: Date
+  body: string
+}
+
 interface IBlogContext {
   profile: IProfile
+  issues: IIssue[]
 }
 
 export const BlogContext = createContext({} as IBlogContext)
 
 export function BlogProvider({ children }: IBlogProviderProps) {
   const [profile, setProfile] = useState<IProfile>({} as IProfile)
+  const [issues, setIssues] = useState<IIssue[]>([])
 
   function normalizeProfileData(profileDataResponse: IProfileResponse) {
     setProfile({
@@ -51,18 +72,43 @@ export function BlogProvider({ children }: IBlogProviderProps) {
     } as IProfile)
   }
 
-  async function fetchProfileData() {
+  async function fetchProfile() {
     const response = await api.get('users/rocketseat-education')
 
     console.log(response.data)
     normalizeProfileData(response.data)
   }
 
+  function normalizeIssues(issues: IIssueResponse) {
+    const nomalizedIssues = issues.items.map((issue) => {
+      return {
+        number: issue.number,
+        title: issue.title,
+        createdAt: issue.created_at,
+        body: issue.body,
+      } as IIssue
+    })
+
+    console.log(nomalizedIssues)
+    setIssues(nomalizedIssues)
+  }
+
+  async function fetchIssues() {
+    const response = await api.get(
+      'search/issues?q=arepo:rocketseat-education/reactjs-github-blog-challenge',
+    )
+
+    normalizeIssues(response.data)
+  }
+
   useEffect(() => {
-    fetchProfileData()
+    fetchProfile()
+    fetchIssues()
   }, [])
 
   return (
-    <BlogContext.Provider value={{ profile }}>{children}</BlogContext.Provider>
+    <BlogContext.Provider value={{ profile, issues }}>
+      {children}
+    </BlogContext.Provider>
   )
 }
