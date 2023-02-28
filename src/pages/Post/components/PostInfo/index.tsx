@@ -12,13 +12,25 @@ import {
   PostInfoContainer,
 } from './styles'
 import { useNavigate } from 'react-router-dom'
+import { IPublication } from '../..'
+import { useContext } from 'react'
+import { BlogContext } from '../../../../contexts/BlogContext'
 
-export function PostInfo() {
+interface IPostInfoProps {
+  publication: IPublication
+}
+
+export function PostInfo({ publication }: IPostInfoProps) {
   const navegate = useNavigate()
+  const {
+    profile: { login, htmlUrl },
+  } = useContext(BlogContext)
 
   function handleClickReturn() {
-    navegate('/')
+    navegate(-1)
   }
+
+  const { comments, createdAt, title } = publication
 
   return (
     <PostInfoContainer>
@@ -27,26 +39,26 @@ export function PostInfo() {
           <FontAwesomeIcon icon={faLessThan} />
           <span>VOLTAR</span>
         </span>
-        <span>
-          VER NO GITHUB
+        <a href={htmlUrl} target="_blank" rel="noreferrer">
+          <span>VER NO GITHUB</span>
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-        </span>
+        </a>
       </NavegationContainer>
       <header>
-        <h3>JavaScript data types and data structures</h3>
+        <h3>{title}</h3>
       </header>
       <DetailContainer>
         <span>
           <FontAwesomeIcon icon={faGithub} />
-          anathangv
+          {login}
         </span>
         <span>
           <FontAwesomeIcon icon={faCalendarDay} />
-          Há um dia
+          {createdAt?.toString()}
         </span>
         <span>
           <FontAwesomeIcon icon={faComment} />
-          32 comentários
+          {`${comments} comentário(s)`}
         </span>
       </DetailContainer>
     </PostInfoContainer>

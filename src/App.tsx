@@ -13,9 +13,12 @@ import { defaultTheme } from './styles/themes/default'
   - createGlobalStyle
   - ThemeProvider
 - react-router-dom
+  - useNavigate
+  - useParams
 - font-awesome
 - axios
 - react-hook-form
+- react-markdown
 */
 
 function App() {

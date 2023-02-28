@@ -1,9 +1,15 @@
+import ReactMarkdown from 'react-markdown'
+import { IPublication } from '../..'
 import { ContentContainer } from './styles'
 
-export function Content() {
+interface IContentProps {
+  publication: IPublication
+}
+
+export function Content({ publication: { body } }: IContentProps) {
   return (
     <ContentContainer>
-      <span>conteudo aqui</span>
+      <ReactMarkdown>{body}</ReactMarkdown>
     </ContentContainer>
   )
 }

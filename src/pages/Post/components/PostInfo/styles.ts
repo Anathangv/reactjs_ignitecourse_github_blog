@@ -45,6 +45,25 @@ export const NavegationContainer = styled.div`
       border-bottom: 1px solid ${(props) => props.theme.blue};
     }
   }
+
+  a {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: ${(props) => props.theme.blue};
+    border-bottom: 1px solid ${(props) => props.theme['base-profile']};
+    transition: 0.4s;
+    padding-bottom: 0.3rem;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      border-bottom: 1px solid ${(props) => props.theme.blue};
+    }
+  }
 `
 
 export const DetailContainer = styled.div`

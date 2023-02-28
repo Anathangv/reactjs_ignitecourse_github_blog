@@ -15,10 +15,10 @@ interface IPostProps {
 export function Post({ publication }: IPostProps) {
   const navigate = useNavigate()
 
-  const { createdAt, title, body } = publication
+  const { createdAt, title, body, number } = publication
 
   function handleClickOpenPost() {
-    navigate('/post')
+    navigate(`/post/${number}`)
   }
 
   return (
