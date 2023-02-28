@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom'
 import { IPublication } from '../..'
 import { useContext } from 'react'
 import { BlogContext } from '../../../../contexts/BlogContext'
+import { dateFormatter } from '../../../../utils/formatter'
 
 interface IPostInfoProps {
   publication: IPublication
@@ -54,7 +55,7 @@ export function PostInfo({ publication }: IPostInfoProps) {
         </span>
         <span>
           <FontAwesomeIcon icon={faCalendarDay} />
-          {createdAt?.toString()}
+          {dateFormatter(createdAt?.toString())}
         </span>
         <span>
           <FontAwesomeIcon icon={faComment} />

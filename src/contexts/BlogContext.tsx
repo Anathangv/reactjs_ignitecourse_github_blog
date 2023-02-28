@@ -4,7 +4,6 @@ import { api } from '../lib/axios'
 /*
 TODO
  - callback in normalize function
- - improve get fetchIssues, passing parammeter
  - add a image/message when no blog found 
 */
 

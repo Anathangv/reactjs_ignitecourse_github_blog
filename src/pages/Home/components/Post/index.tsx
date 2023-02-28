@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { IIssue } from '../../../../contexts/BlogContext'
+import { dateFormatter } from '../../../../utils/formatter'
 import { PostContainer } from './styles'
 
 /*
@@ -25,7 +26,7 @@ export function Post({ publication }: IPostProps) {
     <PostContainer onClick={handleClickOpenPost}>
       <div>
         <span>{title}</span>
-        <span>{createdAt.toString()}</span>
+        <span>{dateFormatter(createdAt.toString())}</span>
       </div>
       <p>{body}</p>
     </PostContainer>

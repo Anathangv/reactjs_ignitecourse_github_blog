@@ -19,6 +19,7 @@ import { defaultTheme } from './styles/themes/default'
 - axios
 - react-hook-form
 - react-markdown
+- date-fns
 */
 
 function App() {

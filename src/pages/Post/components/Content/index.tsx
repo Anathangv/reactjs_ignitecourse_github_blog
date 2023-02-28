@@ -9,7 +9,7 @@ interface IContentProps {
 export function Content({ publication: { body } }: IContentProps) {
   return (
     <ContentContainer>
-      <ReactMarkdown>{body}</ReactMarkdown>
+      <ReactMarkdown linkTarget={'_blank'}>{body}</ReactMarkdown>
     </ContentContainer>
   )
 }
