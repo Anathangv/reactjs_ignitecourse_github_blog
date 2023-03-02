@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Loading } from '../../components/Loading'
+import { BlogContext } from '../../contexts/BlogContext'
 import { api } from '../../lib/axios'
 import { Content } from './components/Content'
 import { PostInfo } from './components/PostInfo'
@@ -23,6 +25,8 @@ export function Post() {
   const [publication, setPublication] = useState<IPublication>(
     {} as IPublication,
   )
+  const { isLoading } = useContext(BlogContext)
+
   const { publicationId } = useParams()
 
   function normalizeIssue(publicationResponse: IPublicationResponse) {
@@ -33,7 +37,6 @@ export function Post() {
       body: publicationResponse.body,
     } as IPublication
 
-    console.log(publication)
     setPublication(publication)
   }
 
@@ -51,8 +54,14 @@ export function Post() {
 
   return (
     <PostContainer>
-      <PostInfo publication={publication} />
-      <Content publication={publication} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <PostInfo publication={publication} />
+          <Content publication={publication} />
+        </>
+      )}
     </PostContainer>
   )
 }

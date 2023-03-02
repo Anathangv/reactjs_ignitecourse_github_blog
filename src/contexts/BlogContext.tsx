@@ -52,6 +52,7 @@ export interface IIssue {
 interface IBlogContext {
   profile: IProfile
   issues: IIssue[]
+  isLoading: boolean
   fetchIssues: (query?: string) => void
 }
 
@@ -60,6 +61,7 @@ export const BlogContext = createContext({} as IBlogContext)
 export function BlogProvider({ children }: IBlogProviderProps) {
   const [profile, setProfile] = useState<IProfile>({} as IProfile)
   const [issues, setIssues] = useState<IIssue[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   function normalizeProfileData(profileDataResponse: IProfileResponse) {
     setProfile({
@@ -76,7 +78,6 @@ export function BlogProvider({ children }: IBlogProviderProps) {
   async function fetchProfile() {
     const response = await api.get('users/rocketseat-education')
 
-    console.log(response.data)
     normalizeProfileData(response.data)
   }
 
@@ -90,11 +91,13 @@ export function BlogProvider({ children }: IBlogProviderProps) {
       } as IIssue
     })
 
-    console.log(nomalizedIssues)
     setIssues(nomalizedIssues)
+    setIsLoading(false)
   }
 
   async function fetchIssues(query?: string) {
+    setIsLoading(true)
+
     query = query || ''
 
     const response = await api.get(
@@ -110,7 +113,7 @@ export function BlogProvider({ children }: IBlogProviderProps) {
   }, [])
 
   return (
-    <BlogContext.Provider value={{ profile, issues, fetchIssues }}>
+    <BlogContext.Provider value={{ profile, issues, isLoading, fetchIssues }}>
       {children}
     </BlogContext.Provider>
   )

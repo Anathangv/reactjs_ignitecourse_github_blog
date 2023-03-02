@@ -23,6 +23,13 @@ export function Search() {
     fetchIssues(formSearch.search)
   }
 
+  function handleEmptySearchExit(query: string) {
+    console.log('handleEmptySearchExit')
+    if (!query && !issues.length) {
+      fetchIssues('')
+    }
+  }
+
   return (
     <SearchContainer>
       <div>
@@ -34,6 +41,7 @@ export function Search() {
           type="text"
           placeholder="Buscar Conteúdo"
           {...register('search')}
+          onBlur={(event) => handleEmptySearchExit(event.target.value)}
         />
       </form>
     </SearchContainer>

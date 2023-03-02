@@ -41,7 +41,7 @@ export const ContentContainer = styled.div`
       color: ${(props) => props.theme.blue};
       display: flex;
       gap: 0.5rem;
-      border-bottom: 1px solid ${(props) => props.theme['base-background']};
+      border-bottom: 1px solid ${(props) => props.theme['base-profile']};
       transition: 0.4s;
       padding-bottom: 0.3rem;
 
