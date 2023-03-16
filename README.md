@@ -1,5 +1,5 @@
 
-# Ignite DT Money
+# Ignite Blog
 
 A ReactJS application developed to be used as a personal blog. 
 
