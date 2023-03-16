@@ -7,7 +7,7 @@ It uses the GitHub API to retrieve information about the user and their posts. S
 
 The app is part of the React course by Rocketseat.
 
-![app](![app blod](https://user-images.githubusercontent.com/14235259/225504989-e45fe9ff-81e4-4b8d-8f2e-8c829ecb6694.gif))
+![app blod](https://user-images.githubusercontent.com/14235259/225504989-e45fe9ff-81e4-4b8d-8f2e-8c829ecb6694.gif)
 
 ## Demo
 
