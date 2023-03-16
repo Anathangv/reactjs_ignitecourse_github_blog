@@ -47,7 +47,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd reactjs_ignitecourse_dt_money
+  cd reactjs_ignitecourse_github_blog
 ```
 
 Install dependencies
