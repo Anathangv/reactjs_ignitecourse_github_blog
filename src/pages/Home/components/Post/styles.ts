@@ -40,8 +40,11 @@ export const PostContainer = styled.div`
   p {
     line-height: 1.625rem;
     max-height: 16.25rem;
-    /* white-space: nowrap; */
+    white-space: initial;
     overflow: hidden;
     text-overflow: ellipsis;
+    -webkit-line-clamp: 10;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   }
 `

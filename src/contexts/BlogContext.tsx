@@ -1,11 +1,11 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import { api } from '../lib/axios'
-
-/*
-TODO
- - callback in normalize function
- - add a image/message when no blog found 
-*/
 
 interface IBlogProviderProps {
   children: ReactNode
@@ -53,7 +53,7 @@ interface IBlogContext {
   profile: IProfile
   issues: IIssue[]
   isLoading: boolean
-  fetchIssues: (query?: string) => void
+  fetchIssues: (query?: string) => Promise<void>
 }
 
 export const BlogContext = createContext({} as IBlogContext)
@@ -75,11 +75,11 @@ export function BlogProvider({ children }: IBlogProviderProps) {
     } as IProfile)
   }
 
-  async function fetchProfile() {
+  const fetchProfile = useCallback(async () => {
     const response = await api.get('users/rocketseat-education')
 
     normalizeProfileData(response.data)
-  }
+  }, [])
 
   function normalizeIssues(issues: IIssueResponse) {
     const nomalizedIssues = issues.items.map((issue) => {
@@ -95,7 +95,7 @@ export function BlogProvider({ children }: IBlogProviderProps) {
     setIsLoading(false)
   }
 
-  async function fetchIssues(query?: string) {
+  const fetchIssues = useCallback(async (query?: string) => {
     setIsLoading(true)
 
     query = query || ''
@@ -105,12 +105,12 @@ export function BlogProvider({ children }: IBlogProviderProps) {
     )
 
     normalizeIssues(response.data)
-  }
+  }, [])
 
   useEffect(() => {
     fetchProfile()
     fetchIssues()
-  }, [])
+  }, [fetchProfile, fetchIssues])
 
   return (
     <BlogContext.Provider value={{ profile, issues, isLoading, fetchIssues }}>

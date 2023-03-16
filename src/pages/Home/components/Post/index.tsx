@@ -3,12 +3,6 @@ import { IIssue } from '../../../../contexts/BlogContext'
 import { dateFormatter } from '../../../../utils/formatter'
 import { PostContainer } from './styles'
 
-/*
-TODO
- - fix date
- - missing retisence in blog card
-*/
-
 interface IPostProps {
   publication: IIssue
 }

@@ -6,8 +6,8 @@ export const HeaderContainer = styled.header`
   background: radial-gradient(
     circle,
     rgba(2, 0, 36, 1) 0%,
-    ${(props) => props.theme['base-profile']} 35%,
-    ${(props) => props.theme['base-background']} 100%
+    ${(props) => props.theme['base-profile']} 60%,
+    ${(props) => props.theme['base-background']} 80%
   );
   height: 18.5rem;
   display: flex;

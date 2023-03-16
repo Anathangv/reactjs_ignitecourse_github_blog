@@ -24,7 +24,6 @@ export function Search() {
   }
 
   function handleEmptySearchExit(query: string) {
-    console.log('handleEmptySearchExit')
     if (!query && !issues.length) {
       fetchIssues('')
     }
