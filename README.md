@@ -33,8 +33,8 @@ https://reactjs-ignitecourse-github-blog.vercel.app/
    - hookform/resolvers
  - [zod](https://github.com/colinhacks/zod)
  - [axios](https://www.npmjs.com/package/axios)
- - [react-markdown]
-
+ - [react-markdown](https://github.com/remarkjs/react-markdown)
+ 
 
 ## Run Locally
 
